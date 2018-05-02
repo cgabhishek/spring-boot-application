@@ -29,8 +29,9 @@ public class CustomerController {
 	public AccountService accountService;
 
 	@RequestMapping(method = RequestMethod.GET, value = "/{accountId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity getAccounts(@PathVariable("accountId") String accountIdOrZero) {
+	public ResponseEntity<List<Account>> getAccounts(@PathVariable("accountId") String accountIdOrZero) {
 		List<Account> accounts = null;
+		//String str = StaticBuilder.myMethod();
 		accounts = accountService.getAccounts(accountIdOrZero);
 		return new ResponseEntity<List<Account>>(accounts, HttpStatus.OK);
 	}
